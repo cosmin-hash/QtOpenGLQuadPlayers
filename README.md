@@ -1,3 +1,9 @@
+
+
+https://github.com/user-attachments/assets/85bec738-2b67-43f3-b2b4-68dd5b7e486c
+
+
+
 # Qt OpenGL Quad Players
 
 A multithreaded **Qt 6 / OpenGL** application that plays back image sequences in
