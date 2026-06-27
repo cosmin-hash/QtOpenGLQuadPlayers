@@ -1,0 +1,12 @@
+# Build output
+build/
+
+# Caches and tool/editor directories
+.cache/
+.claude/
+.zencoder/
+.zenflow/
+.vscode/
+
+# Large media — demo videos are uploaded via GitHub web, never committed
+*.mp4
