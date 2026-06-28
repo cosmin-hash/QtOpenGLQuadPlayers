@@ -13,15 +13,15 @@ uploading a texture and drawing.
 
 ## Threading model
 
-Each [`ViewportPane`](ViewportPane.cpp) wires together three objects:
+Each [`ViewportPane`](src/ViewportPane.cpp) wires together three objects:
 
 | Object | Thread | Responsibility |
 | --- | --- | --- |
-| [`DecodeWorker`](DecodeWorker.cpp) | its own `QThread` | scan directory, pace playback, decode frames |
-| [`FrameQueue`](FrameQueue.h) | shared (lock-guarded) | hand decoded frames across the thread boundary |
-| [`GLViewport`](GLViewport.cpp) | GUI thread | pull freshest frame, upload texture, render |
+| [`DecodeWorker`](src/DecodeWorker.cpp) | its own `QThread` | scan directory, pace playback, decode frames |
+| [`FrameQueue`](src/FrameQueue.h) | shared (lock-guarded) | hand decoded frames across the thread boundary |
+| [`GLViewport`](src/GLViewport.cpp) | GUI thread | pull freshest frame, upload texture, render |
 
-[`MediaController`](MediaController.cpp) is the GUI-thread facade that owns the
+[`MediaController`](src/MediaController.cpp) is the GUI-thread facade that owns the
 worker's `QThread` and the queue. It does **not** call the worker directly —
 every user action (`loadDirectory`, `playForward`, `faster`, …) is emitted as a
 `request*` signal connected to the worker's slot. Because the worker lives in a
@@ -56,7 +56,7 @@ decoded frame piles up as a pending event, memory balloons, and displayed frames
 lag further and further behind real time. That is exactly the failure mode a media
 player must avoid.
 
-[`FrameQueue`](FrameQueue.h) fixes this with two rules:
+[`FrameQueue`](src/FrameQueue.h) fixes this with two rules:
 
 - **Bounded (capacity 3).** `push()` never lets the buffer exceed capacity; if it's
   full, it discards the **oldest** frame to make room and reports the drop. Memory
@@ -74,7 +74,7 @@ hidden.
 
 Tearing down a thread that owns timers and touches a shared queue has to happen in
 a specific order, or you get either a deadlock or a use-after-free. `~MediaController`
-([MediaController.cpp](MediaController.cpp)) does:
+([MediaController.cpp](src/MediaController.cpp)) does:
 
 1. **Stop the worker's timers, in the worker thread.**
    `QMetaObject::invokeMethod(worker, "shutdown", Qt::BlockingQueuedConnection)`

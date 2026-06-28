@@ -19,14 +19,14 @@ set(CMAKE_AUTOUIC ON)
 find_package(Qt6 6.9 REQUIRED COMPONENTS Core Gui Widgets OpenGL OpenGLWidgets)
 
 add_executable(${PROJECT_NAME}
-  main.cpp
-  MainWindow.h MainWindow.cpp
-  ViewportPane.h ViewportPane.cpp
-  GLViewport.h GLViewport.cpp
-  MediaController.h MediaController.cpp
-  DecodeWorker.h DecodeWorker.cpp
-  FrameQueue.h
-  MediaIcons.h MediaIcons.cpp
+  src/main.cpp
+  src/MainWindow.h src/MainWindow.cpp
+  src/ViewportPane.h src/ViewportPane.cpp
+  src/GLViewport.h src/GLViewport.cpp
+  src/MediaController.h src/MediaController.cpp
+  src/DecodeWorker.h src/DecodeWorker.cpp
+  src/FrameQueue.h
+  src/MediaIcons.h src/MediaIcons.cpp
 )
 
 target_link_libraries(QtOpenGLQuadPlayers PRIVATE
