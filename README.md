@@ -6,6 +6,12 @@ https://github.com/user-attachments/assets/85bec738-2b67-43f3-b2b4-68dd5b7e486c
 
 # Qt OpenGL Quad Players
 
+![Qt](https://img.shields.io/badge/Qt-6-41CD52?logo=qt&logoColor=white)
+![C++](https://img.shields.io/badge/C%2B%2B-20-00599C?logo=cplusplus&logoColor=white)
+![OpenGL](https://img.shields.io/badge/OpenGL-4.5-5586A4?logo=opengl&logoColor=white)
+![CMake](https://img.shields.io/badge/CMake-3.21%2B-064F8C?logo=cmake&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-green)
+
 A multithreaded **Qt 6 / OpenGL** application that plays back image sequences in
 a 2×2 grid of independent "players." Each pane decodes its own image sequence on
 a dedicated worker thread and renders frames through an OpenGL textured quad with
