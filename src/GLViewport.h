@@ -1,6 +1,6 @@
 #pragma once
 #include <QOpenGLWidget>
-#include <QOpenGLFunctions_4_5_Core>
+#include <QOpenGLFunctions_4_1_Core>
 #include <QMatrix4x4>
 #include <QImage>
 
@@ -9,7 +9,7 @@ class QOpenGLBuffer;
 class QOpenGLVertexArrayObject;
 class FrameQueue;
 
-class GLViewport : public QOpenGLWidget, protected QOpenGLFunctions_4_5_Core {
+class GLViewport : public QOpenGLWidget, protected QOpenGLFunctions_4_1_Core {
     Q_OBJECT
 public:
     explicit GLViewport(QWidget* parent = nullptr);

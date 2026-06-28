@@ -5,7 +5,7 @@
 #include <QOpenGLVertexArrayObject>
 #include <QTimer>
 
-static const char* VS_QUAD = R"(#version 450 core
+static const char* VS_QUAD = R"(#version 410 core
 layout(location=0) in vec2 inPos;
 layout(location=1) in vec2 inUV;
 out vec2 vUV;
@@ -16,7 +16,7 @@ void main(){
 }
 )";
 
-static const char* FS_TEX = R"(#version 450 core
+static const char* FS_TEX = R"(#version 410 core
 in vec2 vUV;
 out vec4 outColor;
 uniform sampler2D uTex;

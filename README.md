@@ -1,8 +1,9 @@
 # Qt OpenGL Quad Players
 
+![Platforms](https://img.shields.io/badge/platforms-Windows%20%7C%20Linux%20%7C%20macOS-blue)
 ![Qt](https://img.shields.io/badge/Qt-6-41CD52?logo=qt&logoColor=white)
 ![C++](https://img.shields.io/badge/C%2B%2B-20-00599C?logo=cplusplus&logoColor=white)
-![OpenGL](https://img.shields.io/badge/OpenGL-4.5-5586A4?logo=opengl&logoColor=white)
+![OpenGL](https://img.shields.io/badge/OpenGL-4.1-5586A4?logo=opengl&logoColor=white)
 ![CMake](https://img.shields.io/badge/CMake-3.21%2B-064F8C?logo=cmake&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
@@ -81,27 +82,36 @@ The same pipeline as a rendered diagram:
 See **[ARCHITECTURE.md](ARCHITECTURE.md)** for the threading model, the queue's
 drop-oldest rationale, and the shutdown ordering.
 
-## Building (Windows, MinGW)
+## Building
 
-Requires Qt 6.9+ (MinGW 64-bit), CMake 3.21+, and Ninja. Using Qt's bundled
-MinGW toolchain is recommended for ABI compatibility with the Qt libraries.
+Cross-platform — builds on **Windows, Linux, and macOS**. Requires Qt 6.9+,
+CMake 3.21+, and a C++20 compiler. The OpenGL 4.1 core profile is targeted so the
+same code runs on all three (4.1 is the highest version macOS supports).
 
 ```sh
-cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build
 ```
 
-A `windeployqt` post-build step runs automatically on Windows, so the resulting
-`build/` directory is self-contained (Qt DLLs, image-format plugins, and the
-MinGW runtime are copied next to the executable).
+Make sure CMake can find Qt — either have Qt's `bin` on `PATH`, or pass
+`-DCMAKE_PREFIX_PATH="<path>/Qt/<ver>/<compiler>"`.
+
+- **Windows (MinGW):** Qt's bundled MinGW toolchain is recommended for ABI
+  compatibility; add `-G Ninja` if you prefer Ninja. A `windeployqt` post-build
+  step runs automatically, leaving a self-contained `build/` (Qt DLLs,
+  image-format plugins, and runtime copied next to the executable).
+- **Linux:** install the OpenGL dev libraries (e.g. `libgl1-mesa-dev`) alongside
+  Qt.
+- **macOS:** builds with the system Clang toolchain.
 
 ## Running
 
 Launch with no arguments and load sequences via the 📁 button in each pane, or
-preload panes by passing directory paths (row-major: top-left first):
+preload panes by passing directory paths (row-major: top-left first). The binary
+is `build/QtOpenGLQuadPlayers` (`.exe` on Windows):
 
 ```sh
-build/QtOpenGLQuadPlayers.exe \
+./build/QtOpenGLQuadPlayers \
   "path/to/sequence_A" \
   "path/to/sequence_B" \
   "path/to/sequence_C" \
