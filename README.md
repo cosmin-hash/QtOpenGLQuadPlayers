@@ -1,5 +1,6 @@
 # Qt OpenGL Quad Players
 
+![CI](https://github.com/cosmin-hash/QtOpenGLQuadPlayers/actions/workflows/ci.yml/badge.svg)
 ![Platforms](https://img.shields.io/badge/platforms-Windows%20%7C%20Linux%20%7C%20macOS-blue)
 ![Qt](https://img.shields.io/badge/Qt-6-41CD52?logo=qt&logoColor=white)
 ![C++](https://img.shields.io/badge/C%2B%2B-20-00599C?logo=cplusplus&logoColor=white)
