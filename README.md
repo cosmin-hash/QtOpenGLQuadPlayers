@@ -1,9 +1,3 @@
-
-
-https://github.com/user-attachments/assets/85bec738-2b67-43f3-b2b4-68dd5b7e486c
-
-
-
 # Qt OpenGL Quad Players
 
 ![Qt](https://img.shields.io/badge/Qt-6-41CD52?logo=qt&logoColor=white)
@@ -21,7 +15,7 @@ selectable real-time GLSL filters.
 
 _The 2×2 grid playing four independent image sequences, each decoded on its own worker thread, with live per-pane metrics (fps, decode time, queue depth, dropped frames)._
 
-<!-- VIDEO -->
+https://github.com/user-attachments/assets/85bec738-2b67-43f3-b2b4-68dd5b7e486c
 
 ## Features
 
